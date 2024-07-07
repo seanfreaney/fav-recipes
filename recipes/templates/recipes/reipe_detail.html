@@ -1,0 +1,32 @@
+<!-- recipes/templates/recipes/recipe_detail.html -->
+{% extends "base.html" %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block content %}
+    <div class="recipe-detail">
+        <h2>{{ recipe.title }}</h2>
+        <p>{{ recipe.description }}</p>
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>{{ recipe.instructions }}</p>
+        </div>
+        <div class="ingredients">
+            <h3>Ingredients</h3>
+            <ul>
+                {% for ingredient in recipe.recipeingredient_set.all %}
+                    <li>{{ ingredient.quantity }} of {{ ingredient.ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="categories">
+            <h3>Categories</h3>
+            <ul>
+                {% for category in recipe.categories.all %}
+                    <li>{{ category.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <p>Status: {{ recipe.get_status_display }}</p>
+    </div>
+{% endblock %}

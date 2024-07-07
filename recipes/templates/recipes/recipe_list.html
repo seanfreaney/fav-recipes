@@ -17,7 +17,7 @@
                     {% endfor %}
                 </p>
                 <p>Created on: {{ recipe.created_on }}</p>
-                <a href="#">View Recipe</a> <!-- You can add detail view URL later -->
+                <a href="{% url 'recipe_detail' %}">View Recipe</a> <!-- You can add detail view URL later -->
             </div>
         {% endfor %}
     </div>
