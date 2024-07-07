@@ -15,4 +15,17 @@
             </li>
         {% endfor %}
     </ul>
+   
+    <div class="pagination">
+        {% if is_paginated %}
+            <div class="pagination-buttons">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}" class="prev-button">Previous</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="next-button">Next</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

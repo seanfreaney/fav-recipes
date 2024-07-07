@@ -7,4 +7,4 @@ from .models import Recipe
 class RecipeList(generic.ListView):
     queryset = Recipe.objects.all()
     template_name = "recipe_list.html"
-    paginate_by = 6
+    paginate_by = 4

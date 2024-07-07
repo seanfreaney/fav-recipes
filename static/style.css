@@ -110,3 +110,25 @@ ul li a {
 ul li a:hover {
     background: #ddd;
 }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-buttons {
+    display: inline-block;
+}
+
+.pagination-buttons a {
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination-buttons a:hover {
+    background-color: #555;
+}
