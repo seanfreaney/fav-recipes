@@ -1,0 +1,32 @@
+{% load static %}
+
+<!-- base template for all subsequent recipes to inherit from -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Recipe Book{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Additional CSS or JS files here -->
+</head>
+<body>
+    <header>
+        <h1>Recipe Book</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <!-- Additional navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Main content will go here -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Recipe Book</p>
+    </footer>
+</body>
+</html>
