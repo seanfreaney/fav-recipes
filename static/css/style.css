@@ -132,9 +132,9 @@ footer {
     color: #E3DAC9; /* Cream/Bone */
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
     box-sizing: border-box;
 }
