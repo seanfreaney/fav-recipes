@@ -18,34 +18,37 @@ body {
 
 /* Header styling */
 header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
+    background: #2E2E2E; /* Dark grey */
+    color: #E3DAC9; /* Cream/Bone */
+    padding: 20px 0;
     text-align: center;
     margin-bottom: 20px;
 }
 
 header h1 {
     margin: 0;
+    font-family: 'Georgia', serif; /* Different, elegant font for logo */
 }
 
 /* Navigation bar styling */
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
     margin-right: 10px;
 }
 
 nav ul li a {
-    color: #fff;
+    color: #E3DAC9; /* Cream/Bone */
     text-decoration: none;
     padding: 5px 10px;
     background: #444;
     border-radius: 5px;
+    font-family: 'Arial', sans-serif; /* Slightly rounded font */
 }
 
 nav ul li a:hover {
@@ -59,45 +62,31 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer styling */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+/* Recipe grid styling */
+.recipe-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center the grid */
 }
 
-/* Recipe list styling */
-h2 {
-    margin-bottom: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    background: #fafafa;
-    padding: 10px;
-    margin-bottom: 10px;
+.recipe-item {
+    background: #FAF9F6; /* Light pastel color */
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    width: calc(50% - 10px); /* Two columns with space between */
 }
 
-ul li h3 {
+.recipe-item h3 {
     margin: 0 0 10px 0;
 }
 
-ul li p {
+.recipe-item p {
     margin: 5px 0;
 }
 
-ul li a {
+.recipe-item a {
     display: inline-block;
     margin-top: 10px;
     color: #333;
@@ -107,10 +96,11 @@ ul li a {
     border-radius: 5px;
 }
 
-ul li a:hover {
+.recipe-item a:hover {
     background: #ddd;
 }
 
+/* Pagination styling */
 .pagination {
     text-align: center;
     margin-top: 20px;
@@ -122,7 +112,7 @@ ul li a:hover {
 
 .pagination-buttons a {
     color: #fff;
-    background-color: #333;
+    background-color: #2E2E2E;
     padding: 10px 20px;
     margin: 0 5px;
     text-decoration: none;
@@ -131,4 +121,16 @@ ul li a:hover {
 
 .pagination-buttons a:hover {
     background-color: #555;
+}
+
+/* Footer styling */
+footer {
+    background: #2E2E2E; /* Dark grey */
+    color: #E3DAC9; /* Cream/Bone */
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

@@ -5,17 +5,22 @@
 
 {% block content %}
     <h2>Recipe List</h2>
-    <ul>
+    <div class="recipe-grid">
         {% for recipe in object_list %}
-            <li>
+            <div class="recipe-item">
                 <h3>{{ recipe.title }}</h3>
                 <p>{{ recipe.description }}</p>
                 <p>Status: {{ recipe.get_status_display }}</p>
+                <p>Categories: 
+                    {% for category in recipe.categories.all %}
+                        {{ category.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
                 <a href="#">View Recipe</a> <!-- You can add detail view URL later -->
-            </li>
+            </div>
         {% endfor %}
-    </ul>
-   
+    </div>
+
     <div class="pagination">
         {% if is_paginated %}
             <div class="pagination-buttons">
