@@ -1,0 +1,24 @@
+[
+    {
+        "model": "recipes.ingredient",
+        "pk": 1,
+        "fields": {
+            "name": "Chicken"
+        }
+    },
+    {
+        "model": "recipes.ingredient",
+        "pk": 2,
+        "fields": {
+            "name": "Apple"
+        }
+    },
+    {
+        "model": "recipes.ingredient",
+        "pk": 3,
+        "fields": {
+            "name": "Carrot"
+        }
+    }
+  ]
+  
