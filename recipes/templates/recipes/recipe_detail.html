@@ -9,7 +9,7 @@
         <p>{{ recipe.description }}</p>
         <div class="instructions">
             <h3>Instructions</h3>
-            <p>{{ recipe.instructions }}</p>
+            <p>{{ recipe.instructions | safe }}</p>
         </div>
         <div class="ingredients">
             <h3>Ingredients</h3>
