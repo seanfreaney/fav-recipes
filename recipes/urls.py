@@ -5,5 +5,6 @@ from django.urls import path, include
 urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', views.RecipeList.as_view(), name='home'),
+    path("accounts/", include("allauth.urls")),
     path('recipe/<int:pk>/', views.recipe_detail, name='recipe_detail'),
 ]
