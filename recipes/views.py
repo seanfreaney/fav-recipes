@@ -5,14 +5,14 @@ from .models import Recipe
 # Create your views here.
 
 class RecipeList(generic.ListView):
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.filter(status=1)
     template_name = "recipe_list.html"
     paginate_by = 4
 
 
 def recipe_detail(request, pk):
-    queryset = Recipe.objects.all()
-    recipe = get_object_or_404(queryset)
+   # queryset = Recipe.objects.filter(status=1)
+    recipe = get_object_or_404(Recipe, pk=pk)
 
     return render(
         request,
