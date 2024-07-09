@@ -30,6 +30,7 @@ def create_recipe(request):
 
         if recipe_form.is_valid() and ingredient_form.is_valid() and category_form.is_valid():
             recipe = recipe_form.save(commit=False)
+            recipe.user = request.user 
             recipe.save()
             ingredient = ingredient_form.save(commit=False)
             ingredient.recipe = recipe
