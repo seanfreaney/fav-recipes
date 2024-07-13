@@ -6,6 +6,7 @@
 {% block title %}Create Recipe{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
     <h2>Create a New Recipe</h2>
     <form method="post">
         {% csrf_token %}
@@ -22,6 +23,9 @@
         <button type="button" id="add-ingredient-btn">Add Another Ingredient</button>
         <button type="submit">Create Recipe</button>
     </form>
+{% else %}
+    <p>You must be <a href="{% url 'account_login' %}">logged in</a> to create a recipe.</p>
+{% endif %}
 {% endblock %}
 
 {% block extra_js %}
