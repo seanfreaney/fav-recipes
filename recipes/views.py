@@ -16,15 +16,22 @@ class RecipeList(generic.ListView):
     def get_queryset(self):
         queryset = Recipe.objects.filter(status=1)
         category = self.request.GET.get("category")
+        sort_by = self.request.GET.get("sort_by")
 
         if category:
             queryset = queryset.filter(categories__name__icontains=category)
+
+        if sort_by == "newest":
+            queryset = queryset.order_by("-created_on")
+        elif sort_by == "oldest":
+            queryset = queryset.order_by("created_on")
 
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
+        context['sort_by'] = self.request.GET.get("sort_by", "")
         return context
 
 

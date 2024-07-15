@@ -16,6 +16,13 @@
                 {% endfor %}
             </select>
         </div>
+        <div>
+            <label for="sort_by">Sort by:</label>
+            <select name="sort_by" id="sort_by">
+                <option value="newest" {% if sort_by == "newest" %}selected{% endif %}>Newest</option>
+                <option value="oldest" {% if sort_by == "oldest" %}selected{% endif %}>Oldest</option>
+            </select>
+        </div>
         <button type="submit">Filter</button>
     </form>
 
