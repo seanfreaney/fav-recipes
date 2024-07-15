@@ -5,8 +5,22 @@
 
 {% block content %}
     <h2>Recipe List</h2>
+    
+    <form method="get" action=".">
+        <div>
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="">All</option>
+                {% for category in categories %}
+                <option value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Filter</button>
+    </form>
+
     <div class="recipe-grid">
-        {% for recipe in object_list %}
+        {% for recipe in recipes %}
             <div class="recipe-item">
                 <h3>{{ recipe.title }}</h3>
                 <p>{{ recipe.description }}</p>
@@ -17,7 +31,7 @@
                     {% endfor %}
                 </p>
                 <p>Created on: {{ recipe.created_on }}</p>
-                <a href="{% url 'recipe_detail' recipe.pk %}">View Recipe</a> <!-- You can add detail view URL later -->
+                <a href="{% url 'recipe_detail' recipe.pk %}">View Recipe</a>
             </div>
         {% endfor %}
     </div>

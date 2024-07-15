@@ -1,15 +1,31 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
-from .models import Recipe
+from django.db.models import Q
+from .models import Recipe, Category
 from .forms import RecipeForm, RecipeIngredientFormSet, RecipeCategoryForm
 
 # Create your views here.
 
 class RecipeList(generic.ListView):
-    queryset = Recipe.objects.filter(status=1)
-    template_name = "recipe_list.html"
+    model = Recipe
+    template_name = "recipes/recipe_list.html"
+    context_object_name = "recipes"
     paginate_by = 4
+
+    def get_queryset(self):
+        queryset = Recipe.objects.filter(status=1)
+        category = self.request.GET.get("category")
+
+        if category:
+            queryset = queryset.filter(categories__name__icontains=category)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 
 def recipe_detail(request, pk):
