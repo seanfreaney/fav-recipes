@@ -17,6 +17,7 @@ class RecipeList(generic.ListView):
         queryset = Recipe.objects.filter(status=1)
         category = self.request.GET.get("category")
         sort_by = self.request.GET.get("sort_by")
+        search_query = self.request.GET.get("q")
 
         if category:
             queryset = queryset.filter(categories__name__icontains=category)
@@ -26,12 +27,18 @@ class RecipeList(generic.ListView):
         elif sort_by == "oldest":
             queryset = queryset.order_by("created_on")
 
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) | Q(description__icontains=search_query)
+            )
+
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['sort_by'] = self.request.GET.get("sort_by", "")
+        context['search_query'] = self.request.GET.get("q", "")
         return context
 
 

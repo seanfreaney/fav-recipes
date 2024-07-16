@@ -23,6 +23,10 @@
                 <option value="oldest" {% if sort_by == "oldest" %}selected{% endif %}>Oldest</option>
             </select>
         </div>
+        <div>
+            <label for="q">Search:</label>
+            <input type="text" name="q" id="q" value="{{ search_query }}" placeholder="Search recipes">
+        </div>
         <button type="submit">Filter</button>
     </form>
 
