@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
+from django.contrib import messages
 from django.db.models import Q
 from .models import Recipe, Category
 from .forms import RecipeForm, RecipeIngredientFormSet, RecipeCategoryForm
@@ -68,6 +69,7 @@ def create_recipe(request):
             category = category_form.save(commit=False)
             category.recipe = recipe
             category.save()
+            messages.success(request, 'Recipe created successfully!')
             return redirect('recipe_detail', pk=recipe.pk)
     else:
         recipe_form = RecipeForm()

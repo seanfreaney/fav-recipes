@@ -42,6 +42,13 @@
         </nav>
     </header>
     <main>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
         {% block content %}
         <!-- Main content will go here -->
         {% endblock %}
