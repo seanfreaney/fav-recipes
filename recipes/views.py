@@ -81,3 +81,34 @@ def create_recipe(request):
         "ingredient_formset": ingredient_formset,
         "category_form": category_form,
     })
+
+
+@login_required
+def edit_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk, user=request.user)
+    if request.method == "POST":
+        recipe_form = RecipeForm(request.POST, instance=recipe)
+        ingredient_formset = RecipeIngredientFormSet(request.POST, request.FILES, instance=recipe)
+        category_form = RecipeCategoryForm(request.POST, instance=recipe.recipecategory_set.first())
+
+        if recipe_form.is_valid() and ingredient_formset.is_valid() and category_form.is_valid():
+            recipe = recipe_form.save(commit=False)
+            recipe.user = request.user
+            recipe.save()
+            ingredient_formset.instance = recipe
+            ingredient_formset.save()
+            category = category_form.save(commit=False)
+            category.recipe = recipe
+            category.save()
+            messages.success(request, 'Recipe updated successfully!')
+            return redirect('recipe_detail', pk=recipe.pk)
+    else:
+        recipe_form = RecipeForm(instance=recipe)
+        ingredient_formset = RecipeIngredientFormSet(instance=recipe)
+        category_form = RecipeCategoryForm(instance=recipe.recipecategory_set.first())
+
+    return render(request, "recipes/edit_recipe.html", {
+        "recipe_form": recipe_form,
+        "ingredient_formset": ingredient_formset,
+        "category_form": category_form,
+    })

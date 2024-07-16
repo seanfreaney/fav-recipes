@@ -1,0 +1,33 @@
+<!-- recipes/templates/recipes/edit_recipe.html -->
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Edit Recipe{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h2>Edit Recipe</h2>
+    <form method="post" id="recipe-form">
+        {% csrf_token %}
+        {{ recipe_form.as_p }}
+        {{ category_form.as_p }}
+        {{ ingredient_formset.management_form }}
+        <div id="ingredient-forms">
+            {% for form in ingredient_formset %}
+                <div class="ingredient-form">
+                    {{ form.as_p }}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-ingredient-btn">Add Another Ingredient</button>
+        <button type="submit">Update Recipe</button>
+    </form>
+{% else %}
+    <p>You must be <a href="{% url 'account_login' %}">logged in</a> to edit a recipe.</p>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/formset.js' %}"></script>
+{% endblock %}
