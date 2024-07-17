@@ -29,6 +29,9 @@
                 <li>
                     <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                 </li>
+                <li>
+                    <span>Hello, {{ user.username }}</span>
+                </li>
                 {% else %}
                 <li>
                     <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
