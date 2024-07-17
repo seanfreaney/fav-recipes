@@ -112,3 +112,13 @@ def edit_recipe(request, pk):
         "ingredient_formset": ingredient_formset,
         "category_form": category_form,
     })
+
+
+@login_required
+def delete_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk, user=request.user)
+    if request.method == "POST":
+        recipe.delete()
+        messages.success(request, 'Recipe deleted successfully!')
+        return redirect('home')
+    return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
