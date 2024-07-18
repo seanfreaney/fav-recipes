@@ -2,7 +2,7 @@
 
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Recipe, RecipeIngredient, RecipeCategory
+from .models import Recipe, RecipeIngredient, RecipeCategory, Ingredient
 
 class RecipeForm(forms.ModelForm):
     class Meta:
@@ -13,6 +13,10 @@ class RecipeIngredientForm(forms.ModelForm):
     class Meta:
         model = RecipeIngredient
         fields = ['ingredient', 'quantity']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['ingredient'].queryset = Ingredient.objects.all().order_by('name')
 
 class RecipeCategoryForm(forms.ModelForm):
     class Meta:
