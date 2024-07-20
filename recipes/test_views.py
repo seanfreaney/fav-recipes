@@ -115,3 +115,15 @@ class RecipeListViewTests(TestCase):
         response = self.client.get(reverse('home') + '?category=Lunch')
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, 'Chocolate Cake')  
+
+    def test_recipe_list_view_sort_by_newest(self):
+        response = self.client.get(reverse('home') + '?sort_by=newest')
+        self.assertEqual(response.status_code, 200)
+        recipes = response.context['recipes']
+        self.assertGreater(recipes[0].created_on, recipes[1].created_on)
+
+    def test_recipe_list_view_sort_by_oldest(self):
+        response = self.client.get(reverse('home') + '?sort_by=oldest')
+        self.assertEqual(response.status_code, 200)
+        recipes = response.context['recipes']
+        self.assertLess(recipes[0].created_on, recipes[1].created_on)
