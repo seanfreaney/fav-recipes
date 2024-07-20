@@ -1,7 +1,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
 from .models import Recipe, Category, Ingredient, RecipeIngredient, RecipeCategory
+from .forms import RecipeForm, RecipeIngredientFormSet, RecipeCategoryForm
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models import Q
@@ -49,6 +51,7 @@ class RecipeDetailViewTests(TestCase):
     #    response = self.client.get(reverse('recipe_detail', args=[self.draft_recipe.pk]))
     #    self.assertEqual(response.status_code, 404)
 
+    # manual testing for recipe edit and delete.
 
 class RecipeListViewTests(TestCase):
     def setUp(self):
@@ -132,4 +135,22 @@ class RecipeListViewTests(TestCase):
         response = self.client.get(reverse('home') + '?q=Salad')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Salad')
+
+
+class CreateRecipeViewTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.client.login(username='testuser', password='12345')
         
+        self.category = Category.objects.create(pk=3)
+        self.ingredient1 = Ingredient.objects.create(pk=110)
+        self.ingredient2 = Ingredient.objects.create(pk=55)
+
+    def test_create_recipe_view_get(self):
+        response = self.client.get(reverse('create_recipe'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'recipes/create_recipe.html')
+        self.assertIsInstance(response.context['recipe_form'], RecipeForm)
+        self.assertIsInstance(response.context['ingredient_formset'], RecipeIngredientFormSet)
+        self.assertIsInstance(response.context['category_form'], RecipeCategoryForm)
