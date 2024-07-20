@@ -154,3 +154,6 @@ class CreateRecipeViewTests(TestCase):
         self.assertIsInstance(response.context['recipe_form'], RecipeForm)
         self.assertIsInstance(response.context['ingredient_formset'], RecipeIngredientFormSet)
         self.assertIsInstance(response.context['category_form'], RecipeCategoryForm)
+
+    
+        
