@@ -18,36 +18,40 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32.png' %}">
     <link rel="icon" type="image/png" sizes="64x64" href="{% static 'images/favicon-64.png' %}">
     <title>{% block title %}Recipe Book{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- Additional CSS or JS files here -->
 </head>
 <body>
     <header>
         <h1>Recipe Book</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <!-- Additional navigation links as needed -->
-                {% if user.is_authenticated %}
-                <li>
-                    <a class="nav-link {% if request.path == create_recipe_url %}active{% endif %}" aria-current="page" href="{% url 'create_recipe' %}">Create Recipe</a>
-                </li>
-                <li>
-                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-                </li>
-                <li>
-                    <span>Hello, {{ user.username }}</span>
-                </li>
-                {% else %}
-                <li>
-                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                        href="{% url 'account_signup' %}">Register</a>
-                </li>
-                <li>
-                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
-                </li>
-                {% endif %}
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="{% url 'home' %}">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == create_recipe_url %}active{% endif %}" aria-current="page" href="{% url 'create_recipe' %}">Create Recipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="navbar-text">Hello, {{ user.username }}</span>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
@@ -65,6 +69,12 @@
     <footer>
         <p>&copy; 2024 Recipe Book</p>
     </footer>
+
+    <!-- Bootstarp JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     {% block extra_js %}{% endblock %}
 </body>
 </html>

@@ -15,6 +15,23 @@ body {
     color: #333;
     padding: 20px;
 }
+/* fav_recipes/static/css/style.css */
+
+/* Reset some basic styles for cross-browser consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
 
 /* Header styling */
 header {
@@ -30,31 +47,6 @@ header {
 header h1 {
     margin: 0;
     font-family: 'Georgia', serif; /* Different, elegant font for logo */
-}
-
-/* Navigation bar styling */
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: #E3DAC9; /* Cream/Bone */
-    text-decoration: none;
-    padding: 5px 10px;
-    background: #444;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif; /* Slightly rounded font */
-}
-
-nav ul li a:hover {
-    background: #555;
 }
 
 /* Main content styling */
