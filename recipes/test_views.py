@@ -127,3 +127,9 @@ class RecipeListViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         recipes = response.context['recipes']
         self.assertLess(recipes[0].created_on, recipes[1].created_on)
+
+    def test_recipe_list_view_search(self):
+        response = self.client.get(reverse('home') + '?q=Salad')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Salad')
+        
