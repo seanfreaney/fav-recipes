@@ -6,7 +6,9 @@
 {% block content %}
     <div class="recipe-detail">
         <h2>{{ recipe.title }}</h2>
+        <h3>Description</h3>
         <p>{{ recipe.description }}</p>
+        <br>
         <div class="instructions">
             <h3>Instructions</h3>
             <p>{{ recipe.instructions | safe }}</p>
