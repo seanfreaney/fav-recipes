@@ -35,7 +35,7 @@
     <div class="row">
         {% for recipe in recipes %}
             <div class="col-md-6 mb-4">
-                <div class="card bg-light">
+                <div class="card bg-dark text-light">
                     <div class="card-body">
                         <h3 class="card-title">{{ recipe.title }}</h3>
                         <p class="card-text">{{ recipe.description }}</p>
@@ -46,7 +46,7 @@
                             {% endfor %}
                         </p>
                         <p class="card-text">Created on: {{ recipe.created_on }}</p>
-                        <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-dark">View Recipe</a>
+                        <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-light">View Recipe</a>
                     </div>
                 </div>
             </div>
