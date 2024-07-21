@@ -9,7 +9,6 @@ from .models import Recipe, Category, Ingredient, RecipeIngredient, RecipeCatego
 from .forms import RecipeForm, RecipeIngredientFormSet, RecipeCategoryForm
 
 
-
 class RecipeDetailViewTests(TestCase):
     def setUp(self):
         # Create a user
@@ -62,7 +61,7 @@ class RecipeListViewTests(TestCase):
         # Create a category
         self.category1 = Category.objects.create(pk=2)
 
-        #Create ingredients
+        # Create ingredients
         self.ingredient1 = Ingredient.objects.create(pk=15)
         self.ingredient2 = Ingredient.objects.create(pk=5)
         self.ingredient3 = Ingredient.objects.create(pk=25)
