@@ -4,30 +4,32 @@
 {% block title %}Recipe List{% endblock %}
 
 {% block content %}
-    <h2>Recipe List</h2>
+    <h2 class="mb-4">Recipe List</h2>
     
-    <form method="get" action=".">
-        <div>
-            <label for="category">Category:</label>
-            <select name="category" id="category">
-                <option value="">All</option>
-                {% for category in categories %}
-                <option value="{{ category.name }}">{{ category.name }}</option>
-                {% endfor %}
-            </select>
+    <form method="get" action="." class="mb-4">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="category">Category:</label>
+                <select name="category" id="category" class="form-control">
+                    <option value="">All</option>
+                    {% for category in categories %}
+                    <option value="{{ category.name }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="sort_by">Sort by:</label>
+                <select name="sort_by" id="sort_by" class="form-control">
+                    <option value="newest" {% if sort_by == "newest" %}selected{% endif %}>Newest</option>
+                    <option value="oldest" {% if sort_by == "oldest" %}selected{% endif %}>Oldest</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="q">Search:</label>
+                <input type="text" name="q" id="q" value="{{ search_query }}" placeholder="Search recipes" class="form-control">
+            </div>
         </div>
-        <div>
-            <label for="sort_by">Sort by:</label>
-            <select name="sort_by" id="sort_by">
-                <option value="newest" {% if sort_by == "newest" %}selected{% endif %}>Newest</option>
-                <option value="oldest" {% if sort_by == "oldest" %}selected{% endif %}>Oldest</option>
-            </select>
-        </div>
-        <div>
-            <label for="q">Search:</label>
-            <input type="text" name="q" id="q" value="{{ search_query }}" placeholder="Search recipes">
-        </div>
-        <button type="submit">Filter</button>
+        <button type="submit" class="btn btn-dark">Filter</button>
     </form>
 
     <div class="recipe-grid">
