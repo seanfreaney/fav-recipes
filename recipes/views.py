@@ -8,6 +8,7 @@ from .forms import RecipeForm, RecipeIngredientFormSet, RecipeCategoryForm
 
 # Create your views here.
 
+
 class RecipeList(generic.ListView):
     model = Recipe
     template_name = "recipes/recipe_list.html"
@@ -30,7 +31,8 @@ class RecipeList(generic.ListView):
 
         if search_query:
             queryset = queryset.filter(
-                Q(title__icontains=search_query) | Q(description__icontains=search_query)
+                Q(title__icontains=search_query)
+                | Q(description__icontains=search_query)
             )
 
         return queryset
@@ -44,7 +46,7 @@ class RecipeList(generic.ListView):
 
 
 def recipe_detail(request, pk):
-   # queryset = Recipe.objects.filter(status=1)
+    # queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(Recipe, pk=pk)
 
     return render(
@@ -57,10 +59,13 @@ def recipe_detail(request, pk):
 def create_recipe(request):
     if request.method == "POST":
         recipe_form = RecipeForm(request.POST)
-        ingredient_formset = RecipeIngredientFormSet(request.POST, request.FILES)
+        ingredient_formset = RecipeIngredientFormSet
+        (request.POST, request.FILES)
         category_form = RecipeCategoryForm(request.POST)
 
-        if recipe_form.is_valid() and ingredient_formset.is_valid() and category_form.is_valid():
+        if recipe_form.is_valid() and ingredient_formset.is_valid(
+
+        ) and category_form.is_valid():
             recipe = recipe_form.save(commit=False)
             recipe.user = request.user
             recipe.save()
@@ -88,10 +93,14 @@ def edit_recipe(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk, user=request.user)
     if request.method == "POST":
         recipe_form = RecipeForm(request.POST, instance=recipe)
-        ingredient_formset = RecipeIngredientFormSet(request.POST, request.FILES, instance=recipe)
-        category_form = RecipeCategoryForm(request.POST, instance=recipe.recipecategory_set.first())
+        ingredient_formset = RecipeIngredientFormSet(
+            request.POST, request.FILES, instance=recipe)
+        category_form = RecipeCategoryForm(
+            request.POST, instance=recipe.recipecategory_set.first())
 
-        if recipe_form.is_valid() and ingredient_formset.is_valid() and category_form.is_valid():
+        if recipe_form.is_valid() and ingredient_formset.is_valid(
+
+        ) and category_form.is_valid():
             recipe = recipe_form.save(commit=False)
             recipe.user = request.user
             recipe.save()
@@ -105,7 +114,8 @@ def edit_recipe(request, pk):
     else:
         recipe_form = RecipeForm(instance=recipe)
         ingredient_formset = RecipeIngredientFormSet(instance=recipe)
-        category_form = RecipeCategoryForm(instance=recipe.recipecategory_set.first())
+        category_form = RecipeCategoryForm(
+            instance=recipe.recipecategory_set.first())
 
     return render(request, "recipes/edit_recipe.html", {
         "recipe_form": recipe_form,

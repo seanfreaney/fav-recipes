@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Category, Ingredient, Recipe, RecipeIngredient, RecipeCategory
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Category, Ingredient, Recipe, RecipeIngredient, RecipeCategory
 
 
 # Inline model for RecipeIngredient
@@ -31,7 +31,7 @@ class RecipeAdmin(SummernoteModelAdmin):
     search_fields = ['title']
     list_filter = ('status',)
     summernote_fields = ('instructions',)
-    
+
 
 # Register your models here.
 admin.site.register(Category)

@@ -2,6 +2,7 @@ from django.test import TestCase
 from recipes.forms import RecipeForm, RecipeIngredientForm, RecipeCategoryForm
 from recipes.models import Recipe, Ingredient, Category
 
+
 class RecipeFormTest(TestCase):
 
     def test_valid_recipe_form(self):

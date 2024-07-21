@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-STATUS = ((0, "Draft"), (1, "Published")) #logic from codestar blog
+STATUS = ((0, "Draft"), (1, "Published"))  # logic from codestar blog
 
 
 # Create your models here.
@@ -27,7 +27,7 @@ class Recipe(models.Model):
     description = models.TextField()
     instructions = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    categories = models.ManyToManyField(Category, through='RecipeCategory') 
+    categories = models.ManyToManyField(Category, through='RecipeCategory')
     ingredients = models.ManyToManyField(Ingredient, through='RecipeIngredient')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

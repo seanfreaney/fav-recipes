@@ -60,10 +60,10 @@ Site owner mission. User mission
   - No errors returned through jigsaw validator.
 
 - __JS__
-  - update 
+  - jshint
 
 - __Python__
-  - update 
+  - PEP8 
 
 
 ### Unfixed Bugs
