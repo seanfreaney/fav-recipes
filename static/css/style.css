@@ -35,8 +35,8 @@ body {
 
 /* Header styling */
 header {
-    background: #2E2E2E; /* Dark grey */
-    color: #E3DAC9; /* Cream/Bone */
+    background: #bfb39e; 
+    color: rgba(0, 0, 0, .9); 
     padding: 20px 0;
     text-align: center;
     margin-bottom: 20px;
@@ -120,8 +120,8 @@ main {
 
 /* Footer styling */
 footer {
-    background: #2E2E2E; /* Dark grey */
-    color: #E3DAC9; /* Cream/Bone */
+    background: #bfb39e; 
+    color: rgba(0, 0, 0, .9); 
     text-align: center;
     padding: 10px 0;
     width: 100%;

@@ -35,8 +35,8 @@ body {
 
 /* Header styling */
 header {
-    background: #2E2E2E; /* Dark grey */
-    color: #E3DAC9; /* Cream/Bone */
+    background: #E3DAC9; /* Dark grey */
+    color: rgba(0, 0, 0, .9); /* Cream/Bone */
     padding: 20px 0;
     text-align: center;
     margin-bottom: 20px;
