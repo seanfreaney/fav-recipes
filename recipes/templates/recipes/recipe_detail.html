@@ -4,7 +4,7 @@
 {% block title %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
-<div class="recipe-detail card bg-light text-dark p-4">
+<div class="recipe-detail card bg-dark text-light p-4">
     <h2>{{ recipe.title }}</h2>
     <h3>Description</h3>
     <p>{{ recipe.description }}</p>
@@ -14,7 +14,7 @@
     </div>
     <div class="ingredients mb-4">
         <h3>Ingredients</h3>
-        <ul class="list-group">
+        <ul class="list-group text-dark">
             {% for ingredient in recipe.recipeingredient_set.all %}
                 <li class="list-group-item">{{ ingredient.quantity }} of {{ ingredient.ingredient.name }}</li>
             {% endfor %}
@@ -22,7 +22,7 @@
     </div>
     <div class="categories mb-4">
         <h3>Category</h3>
-        <ul class="list-group">
+        <ul class="list-group text-dark">
             {% for category in recipe.categories.all %}
                 <li class="list-group-item">{{ category.name }}</li>
             {% endfor %}
@@ -30,7 +30,7 @@
     </div>
     <p>Status: {{ recipe.get_status_display }}</p>
     {% if user == recipe.user %}
-        <a href="{% url 'edit_recipe' recipe.pk %}" class="btn btn-dark">Edit Recipe</a>
+        <a href="{% url 'edit_recipe' recipe.pk %}" class="btn btn-secondary">Edit Recipe</a>
         <a href="{% url 'delete_recipe' recipe.pk %}" class="btn btn-danger">Delete Recipe</a>
     {% endif %}
 </div>

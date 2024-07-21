@@ -60,15 +60,15 @@ Site owner mission. User mission
   - No errors returned through jigsaw validator.
 
 - __JS__
-  - jshint
+  - No errors returned through jshint validator.
 
 - __Python__
-  - PEP8 
+  - No errors returned through PEP8 CI Python Linter.
 
 
 ### Unfixed Bugs
 - __TBU__
-  - blurd
+  - blurb
 
 
 ## Deployment
