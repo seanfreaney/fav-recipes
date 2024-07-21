@@ -7,8 +7,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h2>Edit Recipe</h2>
-    <form method="post" id="recipe-form">
+    <h2 class="mb-4">Edit Recipe</h2>
+    <form method="post" id="recipe-form" class="bg-light p-4 card">
         {% csrf_token %}
         {{ recipe_form.as_p }}
         {{ category_form.as_p }}
@@ -20,8 +20,8 @@
                 </div>
             {% endfor %}
         </div>
-        <button type="button" id="add-ingredient-btn">Add Another Ingredient</button>
-        <button type="submit">Update Recipe</button>
+        <button type="button" id="add-ingredient-btn" class="btn btn-secondary">Add Another Ingredient</button>
+        <button type="submit" class="btn btn-dark">Update Recipe</button>
     </form>
 {% else %}
     <p>You must be <a href="{% url 'account_login' %}">logged in</a> to edit a recipe.</p>
