@@ -4,10 +4,12 @@
 {% block title %}Confirm Delete{% endblock %}
 
 {% block content %}
+<div class="bg-light p-4 card">
     <h2>Are you sure you want to delete "{{ recipe.title }}"?</h2>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
-        <a href="{% url 'recipe_detail' recipe.pk %}">Cancel</a>
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-secondary">Cancel</a>
     </form>
+</div>
 {% endblock %}
