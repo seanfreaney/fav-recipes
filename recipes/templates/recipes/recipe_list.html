@@ -32,19 +32,23 @@
         <button type="submit" class="btn btn-dark">Filter</button>
     </form>
 
-    <div class="recipe-grid">
+    <div class="row">
         {% for recipe in recipes %}
-            <div class="recipe-item">
-                <h3>{{ recipe.title }}</h3>
-                <p>{{ recipe.description }}</p>
-                <p>Status: {{ recipe.get_status_display }}</p>
-                <p>Categories: 
-                    {% for category in recipe.categories.all %}
-                        {{ category.name }}{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </p>
-                <p>Created on: {{ recipe.created_on }}</p>
-                <a href="{% url 'recipe_detail' recipe.pk %}">View Recipe</a>
+            <div class="col-md-6 mb-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ recipe.title }}</h3>
+                        <p class="card-text">{{ recipe.description }}</p>
+                        <p class="card-text">Status: {{ recipe.get_status_display }}</p>
+                        <p class="card-text">Categories: 
+                            {% for category in recipe.categories.all %}
+                                {{ category.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                        <p class="card-text">Created on: {{ recipe.created_on }}</p>
+                        <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-dark">View Recipe</a>
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>
