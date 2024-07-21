@@ -117,6 +117,22 @@ footer {
     box-sizing: border-box;
 }
 
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ccc;
+}
+
 /* Recipe detail view styling */
 .recipe-detail {
     padding: 20px;
