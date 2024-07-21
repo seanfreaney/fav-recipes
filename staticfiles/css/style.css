@@ -23,7 +23,6 @@ body {
 }
 
 /* Header styling */
-
 header {
     background: var(--dark-grey);
     color: var(--bone);
@@ -36,7 +35,7 @@ header {
 
 header h1 {
     margin: 0;
-   /* font-family: 'Georgia', serif; /* Different, elegant font for logo */
+    font-family: 'Georgia', serif; /* Different, elegant font for logo */
 }
 
 /* Main content styling */
@@ -56,7 +55,7 @@ main {
 }
 
 .recipe-item {
-    background: #FAF9F6; /* Light pastel color */
+    background: var(--light-grey);
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -74,7 +73,7 @@ main {
 .recipe-item a {
     display: inline-block;
     margin-top: 10px;
-    color: #333;
+    color: var(--dark-grey);
     text-decoration: none;
     padding: 5px 10px;
     background: #eee;
@@ -96,8 +95,8 @@ main {
 }
 
 .pagination-buttons a {
-    color: #fff;
-    background-color: #2E2E2E;
+    color: var(--bone);
+    background-color: var(--dark-grey);
     padding: 10px 20px;
     margin: 0 5px;
     text-decoration: none;
@@ -110,8 +109,8 @@ main {
 
 /* Footer styling */
 footer {
-    background: #bfb39e; 
-    color: rgba(0, 0, 0, .9); 
+    background: var(--dark-grey);
+    color: var(--bone);
     text-align: center;
     padding: 10px 0;
     width: 100%;
@@ -121,7 +120,7 @@ footer {
 /* Recipe detail view styling */
 .recipe-detail {
     padding: 20px;
-    background: #FAF9F6; /* Light pastel color */
+    background: var(--light-grey);
     border: 1px solid #ddd;
     border-radius: 5px;
 }
