@@ -46,6 +46,11 @@ main {
     margin-bottom: 40px; /* To ensure there's space above the fixed footer */
 }
 
+p > textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Recipe grid styling */
 .recipe-grid {
     display: flex;
