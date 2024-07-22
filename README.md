@@ -2,6 +2,12 @@
 
 Site owner mission. User mission
 
+## Design
+
+### Wire Frames
+
+- Add here
+
 ## Existing Features
 
 ### Login
@@ -11,6 +17,36 @@ Site owner mission. User mission
 ### CRUD
 
 - Blurb on user capabilities
+
+- __Javascript__
+ - Custom script which allows users to dynamically add new ingredient forms to a formset on a webpage. When the user clicks the "Add Ingredient" button, a new form is created by cloning the first form in the set, updating its attributes to ensure uniqueness, clearing its values, and appending it to the formset.
+
+- Event Listener for DOMContentLoaded:
+   - document.addEventListener('DOMContentLoaded', function() {
+    // Code here runs after the DOM is fully loaded });
+ - This event listener waits for the entire HTML document to be fully loaded and parsed before executing the enclosed function. This ensures that all the DOM elements are available for manipulation.
+
+- Select DOM Elements:
+ - const addIngredientBtn = document.getElementById('add-ingredient-btn');
+     - addIngredientBtn: Selects the button with the ID add-ingredient-btn which will be used to add new ingredient forms.
+  - const ingredientFormset = document.querySelector('#ingredient-forms');
+     - ingredientFormset: Selects the container with the ID ingredient-forms which holds the ingredient forms.
+ - const totalFormsInput = document.querySelector('#id_recipeingredient_set-TOTAL_FORMS');
+     - totalFormsInput: Selects the input element with the ID id_recipeingredient_set-TOTAL_FORMS, which tracks the total number of forms.
+
+- Initial Form Count:
+  - let formNum = ingredientFormset.children.length;
+    - formNum: Initializes a counter to keep track of the number of existing forms. It is set to the number of children within the ingredientFormset container.
+
+- Add Event Listener to Button:
+  - addIngredientBtn.addEventListener('click', 
+    function() {
+    // Code here runs when the add button is clicked
+    });
+
+
+
+
 
 ### Templates
 - __base.html__
