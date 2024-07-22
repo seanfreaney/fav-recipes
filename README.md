@@ -43,7 +43,17 @@ Site owner mission. User mission
     function() {
     // Code here runs when the add button is clicked
     });
+    - Adds a click event listener to the addIngredientBtn button. When the button is clicked, the enclosed function executes.
 
+- Clone and Append a New Form:
+  - if (ingredientFormset.children.length > 0) {
+    const newForm = ingredientFormset.children[0].cloneNode(true);
+    const formRegex = new RegExp(`recipeingredient_set-(\\d+)-`, 'g');
+    const newFormNum = formNum;
+    - Checks if there is at least one form already present in the ingredientFormset.
+    - Clones the first form (index 0) inside ingredientFormset, including all its child elements, and assigns it to newForm.
+    - formRegex is a regular expression that matches the pattern recipeingredient_set- followed by any digits (the current form number).
+    - newFormNum is assigned the current value of formNum.
 
 
 
