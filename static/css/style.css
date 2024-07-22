@@ -46,7 +46,8 @@ main {
     margin-bottom: 40px; /* To ensure there's space above the fixed footer */
 }
 
-p > textarea {
+p > textarea,
+p > input {
     width: 100%;
     box-sizing: border-box;
 }
