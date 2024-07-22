@@ -55,8 +55,37 @@ Site owner mission. User mission
     - formRegex is a regular expression that matches the pattern recipeingredient_set- followed by any digits (the current form number).
     - newFormNum is assigned the current value of formNum.
 
+- Update the Cloned Form's Attributes
+  - newForm.innerHTML = newForm.innerHTML.replace(formRegex, `recipeingredient_set-${newFormNum}-`);
+    - Replaces all occurrences of the pattern recipeingredient_set- followed by digits in the innerHTML of the cloned form with recipeingredient_set- followed by the new form number. This ensures that the form fields have unique names and IDs.
+  
+  - newForm.querySelectorAll('[id]').forEach(function   (element) {
+    const newId = element.id.replace(formRegex, `recipeingredient_set-${newFormNum}-`);
+    element.id = newId;
+    });
+    - Finds all elements in the cloned form that have an id attribute and Updates each id attribute to use the new form number, ensuring uniqueness.
+  
+  - newForm.querySelectorAll('[name]').forEach(function(element) {
+    const newName = element.name.replace(formRegex, `recipeingredient_set-${newFormNum}-`);
+    element.name = newName;
+    });
+    - Finds all elements in the cloned form that have a name attribute and updates each id attribute to use the new form number, ensuring uniqueness.
 
+- Clear Values in Cloned Form
+  - newForm.querySelectorAll('input, select, textarea').forEach(function(element) {
+    if (element.type === 'checkbox' || element.type === 'radio') {
+        element.checked = false;
+        } else {
+        element.value = '';
+        }
+      });
+      - Selects all input, select, and textarea elements within the cloned form and clears their values. If the element is a checkbox, it unchecks it.
 
+- Append the Cloned Form and Update Total Forms
+  - ingredientFormset.appendChild(newForm);
+    formNum++;
+    totalFormsInput.value = formNum;
+    - Appends the cloned and modified form (newForm) to the ingredientFormset. Increments the formNum counter. Updates the value of the totalFormsInput to reflect the new total number of forms.
 
 ### Templates
 - __base.html__
