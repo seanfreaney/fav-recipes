@@ -1,24 +1,36 @@
 # Recipe Book
 
-Site owner mission. User mission
+I love to cook but I am not very organised. My partner and I will search the pantry for ingredients and make a delicious meal but forget to write down the process and all of the ingredients used. A few days later I will crave this newly created dish and realise that I have forgotten the process and many of the ingredients. Damn!! I figured that if I am encountering this problem often, others are too. Recipe Book is intended to fix this problem and provide the user with the means to record, share and view all of their homemade recipes.
+
+As a site owner, my goal is to provide a user-friendly recipe creation site. 
 
 ## Design
 
 ### Wire Frames
 
-- Add here
+It was my intention to keep the design as simple as possible. Initially, the only views I envisaged were for recipe list and recipe creation. I have included wireframes for iphone and desktop for each below
+
+- Recipe List Wireframes
+![recipe list iphone](assets/images/iphone-recipe_list.png)
+![recipe list desktop](assets/images/desktop-recipe_list.png)
+- Create Recipe Wireframes
+![recipe create iphone](assets/images/iphone-create_recipe.png)
+![recipe create desktop](assets/images/desktop-create_recipe.png)
 
 ## Existing Features
 
+
+
+
 ### Login
 
-- Login
+- 
 
-### CRUD
+### Recipe Creation
 
 - Blurb on user capabilities
 
-- __Javascript__
+__Javascript__
  - Custom script which allows users to dynamically add new ingredient forms to a formset on a webpage. When the user clicks the "Add Ingredient" button, a new form is created by cloning the first form in the set, updating its attributes to ensure uniqueness, clearing its values, and appending it to the formset.
 
 - Event Listener for DOMContentLoaded:
@@ -87,30 +99,15 @@ Site owner mission. User mission
     totalFormsInput.value = formNum;
     - Appends the cloned and modified form (newForm) to the ingredientFormset. Increments the formNum counter. Updates the value of the totalFormsInput to reflect the new total number of forms.
 
-### Templates
-- __base.html__
+### Recipe Editing
 
-  - blurb on base.html
+### Recipe Deletion
 
-- __recipe_list.html__
-  
-  - blurb on recipe list
+### Other
 
-- __create_recipe.html__
-  
-  - blurb on recipe list
-
-- __recipe_detail.html__
-  
-  - blurb on recipe detail
-
-- __edit_recipe.html__
-  
-  - blurb on edit recipe
-
-- __delete_recipe.html__
-  
-  - blurb on delete
+- Pagination
+- Search / Filter
+- Header / Footer
 
 
 ### Additional features
