@@ -94,6 +94,11 @@ p > input {
     background: #ddd;
 }
 
+.list-group-item {
+    background-color: inherit;
+    border: none;
+}
+
 /* Pagination styling */
 .pagination {
     text-align: center;
