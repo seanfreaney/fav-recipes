@@ -16,7 +16,7 @@
         <h3>Ingredients</h3>
         <ul class="list-group text-light">
             {% for ingredient in recipe.recipeingredient_set.all %}
-                <li class="list-group-item">{{ ingredient.quantity }} of {{ ingredient.ingredient.name }}</li>
+                <li class="list-group-item">{{ ingredient.ingredient.name }}: {{ ingredient.quantity }}</li>
             {% endfor %}
         </ul>
     </div>
