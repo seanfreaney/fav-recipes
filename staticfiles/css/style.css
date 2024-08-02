@@ -161,11 +161,6 @@ footer {
     margin-bottom: 20px;
 }
 
-.recipe-detail ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .recipe-item {
