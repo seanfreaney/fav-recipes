@@ -56,16 +56,14 @@ def recipe_detail(request, pk):
     )
 
 
+@login_required
 def create_recipe(request):
     if request.method == "POST":
         recipe_form = RecipeForm(request.POST)
-        ingredient_formset = RecipeIngredientFormSet
-        (request.POST, request.FILES)
+        ingredient_formset = RecipeIngredientFormSet(request.POST, request.FILES)
         category_form = RecipeCategoryForm(request.POST)
 
-        if recipe_form.is_valid() and ingredient_formset.is_valid(
-
-        ) and category_form.is_valid():
+        if recipe_form.is_valid() and ingredient_formset.is_valid() and category_form.is_valid():
             recipe = recipe_form.save(commit=False)
             recipe.user = request.user
             recipe.save()
