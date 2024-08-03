@@ -152,8 +152,21 @@ This template serves as a foundational layout for the site. It includes a header
 -- Image here --
 
 __recipe_list.html__
+This template is used to display the list of recipes with filtering, sorting, and search functionalities. It extends the base template to maintain a consistent look and feel. The main content area includes a form for filtering recipes, a list of recipe cards, and pagination controls to navigate through the list of recipes.
+
+- Filter Form:
+  - Category Dropdown: Allows users to select a category to filter recipes.
+  - Sort by Dropdown: Allows users to sort recipes by newest or oldest.
+  - Search Input: Allows users to search recipes by title or description.
+
+- Recipe List:
+  - Displays a list of recipes using Bootstrap cards. Each recipe card includes: Title, Description, Status, Categories, Created date, and Link to view the full recipe details.
+
+- Pagination controls:
+  - pagination buttons if the recipe list is paginated, allowing users to navigate between pages of recipes.
 
 __recipe_detail.html__
+
 
 __create_recipe.html__
 - javascript dymanic functionality detailed below
