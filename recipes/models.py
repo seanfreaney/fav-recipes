@@ -24,7 +24,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=100)  # Changed to CharField with max_length=100
+    description = models.CharField(max_length=100)  
     instructions = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, through='RecipeCategory')

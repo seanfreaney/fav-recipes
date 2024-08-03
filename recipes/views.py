@@ -46,7 +46,6 @@ class RecipeList(generic.ListView):
 
 
 def recipe_detail(request, pk):
-    # queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(Recipe, pk=pk)
 
     return render(

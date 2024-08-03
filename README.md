@@ -134,6 +134,22 @@ __delete_recipe__
 ## Templates
 
 __base.html__
+This template serves as a foundational layout for the site. It includes a header with navigation, a footer with social media links, and a main content area where specific pages will inject their content. It also handles user authentication states and displays messages using Bootstrap styling.
+
+- Header and Navigation
+  - Display of site title and Navbar
+  - Navigation links which adjust based on user authentication state. If anonymous, user can see links for 'Home', 'Register' and 'Login'. If logged in the user can see links for 'Home', 'Create Recipe', 'Logout' and a welcome message.
+
+-- Image here -- 
+
+- Main Content
+  - Messages are displayed here using Bootstrap alerts (e.g., success, error notifications)
+  - Content block which will be filled by child templates.
+
+- Footer 
+  - Footer containing social media links and false copyright information.
+
+-- Image here --
 
 __recipe_list.html__
 
