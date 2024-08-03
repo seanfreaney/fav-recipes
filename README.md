@@ -17,10 +17,52 @@ It was my intention to keep the design as simple as possible. Initially, the onl
 ![recipe create iphone](assets/images/iphone-create_recipe.png)
 ![recipe create desktop](assets/images/desktop-create_recipe.png)
 
+## Models
+
+__Category__
+This model is used to categorise recipes.
+- Fields
+  - 'name': A character field with a maximum length of 100 characters to store the category name.
+- Mehtods
+  - '_str_': Returns the name of the category as its string representation.
+
+__Ingredient__
+This model represents ingredients used in recipes.
+- Fields
+  - 'name': A character field with a maximum length of 100 characters to store the ingredient name.
+- Methods
+  - '_str_': Returns the name of the ingredient as its string representation.
+
+__Recipe__
+This model represents recipes and their associated details.
+- Fields
+  - 'title': A character field with a maximum length of 200 characters for the recipe title.
+  - 'description':A character field with a maximum length of 100 characters for a brief description of the recipe.
+  - 'instructions': A text field to store detailed instructions for the recipe.
+  - 'user': A foreign key to the User model, indicating the user who created the recipe. If the user is deleted, all their recipes will also be deleted.
+  - 'categories': A many-to-many relationship with the Category model through the RecipeCategory model, allowing a recipe to be associated with multiple categories.
+  - 'ingredients': A many-to-many relationship with the Ingredient model through the RecipeIngredient model, allowing a recipe to include multiple ingredients.
+  - 'created_on': A date-time field that automatically records when the recipe is created.
+  - 'status': An integer field with predefined choices (defined by STATUS) to indicate the recipe's status, with a default value of 0.
+- Mehtods
+  - '_str_': Returns the name of the recipe as its string representation.
+
+__RecipeIngredient__
+This model serves as an intermediary to manage the many-to-many relationship between recipes and ingredients, including the quantity of each ingredient used in a recipe.
+- Fields
+  - 'recipe': A foreign key to the Recipe model, linking the ingredient to a specific recipe. If the recipe is deleted, the associated RecipeIngredient records will also be deleted.
+  - 'ingredient': A foreign key to the Ingredient model, linking the ingredient to a specific recipe. If the ingredient is deleted, the associated RecipeIngredient records will also be deleted.
+  - 'qunatity': A character field with a maximum length of 100 characters to specify the quantity of the ingredient used in the recipe.
+
+__RecipeCategory__
+This model serves as an intermediary to manage the many-to-many relationship between recipes and categories.
+- Fields
+  - 'recipe': A foreign key to the Recipe model, linking the recipe to a specific category. If the recipe is deleted, the associated RecipeCategory records will also be deleted.
+  - 'category': A foreign key to the Category model, linking the recipe to a specific category. If the category is deleted, the associated RecipeCategory records will also be deleted.
+
+
+
 ## Existing Features
-
-
-
 
 ### Login
 
@@ -28,7 +70,7 @@ It was my intention to keep the design as simple as possible. Initially, the onl
 
 ### Recipe Creation
 
-- Blurb on user capabilities
+- 
 
 __Javascript__
  - Custom script which allows users to dynamically add new ingredient forms to a formset on a webpage. When the user clicks the "Add Ingredient" button, a new form is created by cloning the first form in the set, updating its attributes to ensure uniqueness, clearing its values, and appending it to the formset.
