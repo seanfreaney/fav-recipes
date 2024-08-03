@@ -133,16 +133,21 @@ __delete_recipe__
 
 ## Templates
 
+__base.html__
 
-## Existing Features
+__recipe_list.html__
 
-### Login
+__recipe_detail.html__
 
-- 
+__create_recipe.html__
+- javascript dymanic functionality detailed below
 
-### Recipe Creation
+__edit_recipe.html__
+- javascript dymanic functionality detailed below
 
-- 
+__confirm_delete.html__
+
+
 
 __Javascript__
  - Custom script which allows users to dynamically add new ingredient forms to a formset on a webpage. When the user clicks the "Add Ingredient" button, a new form is created by cloning the first form in the set, updating its attributes to ensure uniqueness, clearing its values, and appending it to the formset.
