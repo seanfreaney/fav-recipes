@@ -166,12 +166,40 @@ This template is used to display the list of recipes with filtering, sorting, an
   - pagination buttons if the recipe list is paginated, allowing users to navigate between pages of recipes.
 
 __recipe_detail.html__
+This template is used to display the details of a specific recipe. It extends the base template for consistency and includes sections for the recipe's title, description, instructions, ingredients, categories, and status. If the logged-in user is the owner of the recipe, they are given options to edit or delete the recipe. The use of Bootstrap classes ensures the content is styled appropriately.
 
+- Recipe detail card displays the recipe title inside a Bootstrap card with a dark background and light text.
+- Description shows the description of the recipe.
+- Instructions displays the recipe instructions. The | safe filter is used to render the instructions as HTML, allowing for any HTML content in the instructions to be correctly displayed.
+- Ingredients section lists the ingredients for the recipe, showing each ingredient's name and quantity.
+- Category lists the category the recipe belongs to.
+- Status shows the status of the recipe using the get_status_display method to display the human-readable version of the status.
+- "Edit Recipe" and "Delete Recipe" buttons if the current user is the owner of the recipe, allowing them to edit or delete the recipe.
 
 __create_recipe.html__
+This template provides the structure for creating a new recipe, including forms for recipe details, categories, and ingredients. It checks if the user is authenticated before displaying the form, prompting login otherwise. The template leverages Django's form handling to render forms and includes JavaScript for enhanced functionality like adding more ingredient forms dynamically. The layout and design are consistent with the rest of the site, using Bootstrap for styling.
+
+- Display for a form to create a new recipe:
+  - Title and Description: Using recipe_form.
+  - Category: Using category_form.
+  - Ingredients: Using ingredient_formset, which allows multiple ingredient forms.
+  - CSRF Token: Ensures security for the form submission.
+  - Add Ingredient Button: A button to dynamically add more ingredient forms using JavaScript.
+  - Create recipe submits the form to create recipe
+
 - javascript dymanic functionality detailed below
 
 __edit_recipe.html__
+This template provides the structure for editing an existing recipe, including forms for recipe details, categories, and ingredients. It checks if the user is authenticated before displaying the form, prompting login otherwise. The template leverages Django's form handling to render forms and includes JavaScript for enhanced functionality like adding more ingredient forms dynamically. The layout and design are consistent with the rest of the site, using Bootstrap for styling.
+
+- Display for a form to edit and existing recipe:
+  - Title and Description: Using recipe_form.
+  - Category: Using category_form.
+  - Ingredients: Using ingredient_formset, which allows multiple ingredient forms.
+  - CSRF Token: Ensures security for the form submission.
+  - Add Ingredient Button: A button to dynamically add more ingredient forms using JavaScript.
+  - Update button: Submits the form to update the recipe.
+
 - javascript dymanic functionality detailed below
 
 __confirm_delete.html__
