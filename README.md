@@ -19,6 +19,8 @@ It was my intention to keep the design as simple as possible. Initially, the onl
 
 ## Models
 
+The creation of my wireframes provided a basis for the site's models. During the planning process I sought guidance from my mentor on how to associate multiple ingredients to each recipe. The use of intermediate models and the 'through' parameter facilitates this. 
+
 __Category__
 This model is used to categorise recipes.
 - Fields
