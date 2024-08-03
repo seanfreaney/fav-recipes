@@ -19,7 +19,7 @@ It was my intention to keep the design as simple as possible. Initially, the onl
 
 ## Models
 
-The creation of my wireframes provided a basis for the site's models. During the planning process I sought guidance from my mentor on how to associate multiple ingredients to each recipe. The use of intermediate models and the 'through' parameter facilitates this. 
+The creation of my wireframes provided a basis for the site's models. During the planning process I sought guidance from my mentor on how to associate multiple ingredients to each recipe. The use of intermediate models and the 'through' parameter facilitates this. In addition to the models listed below, I have used Django's default user model.
 
 __Category__
 This model is used to categorise recipes.
@@ -60,8 +60,78 @@ __RecipeCategory__
 This model serves as an intermediary to manage the many-to-many relationship between recipes and categories.
 - Fields
   - 'recipe': A foreign key to the Recipe model, linking the recipe to a specific category. If the recipe is deleted, the associated RecipeCategory records will also be deleted.
-  - 'category': A foreign key to the Category model, linking the recipe to a specific category. If the category is deleted, the associated RecipeCategory records will also be deleted.
+  - 'category': A foreign key to the Category model, linking the recipe to a specific category. If the category is deleted, the associated RecipeCategory records will also be deleted. 
 
+![Ingredient model and RecipeIngredient model ERDs](assets/images/recipe-ingredient.png)
+![Category model and RecipeCategory model ERDs](assets/images/recipe-category.png)
+![Recipe model ERDs](assets/images/recipe-category.png)
+
+## Forms
+
+__RecipeForm__
+- Defines a form for the 'Recipe' model
+- Meta class:
+  - model: Specifies the model this form is associated with (Recipe).
+  - fields: Specifies the fields to include in the form (title, description, instructions, status).
+
+__RecipeIngredientForm__
+- Defines a form for the 'RecipeIngredient' model.
+- Meta class:
+  - model: Specifies the model this form is associated with (RecipeIngredient).
+  - fields: Specifies the fields to include in the form (ingredient, quantity).
+- init method:
+  - Calls the parent class's __init__ method to initialize the form.
+  - Orders the ingredient queryset alphabetically by name for the dropdown selection.
+
+__RecipeCategoryForm__
+- Defines a form for the 'RecipeCategory' model.
+- Meta class: 
+  - model: Specifies the model this form is associated with (RecipeCategory).
+  - fields: Specifies the field to include in the form (category).
+
+__RecipeIngredientFormSet__
+- Creates an inline formset for managing RecipeIngredient instances related to a Recipe.
+- Parameters:
+  - Recipe: The parent model.
+  - RecipeIngredient: The child model.
+  - form: The form class to use for the formset (RecipeIngredientForm).
+  - extra: The number of extra empty forms to display (1 in this case).
+  - can_delete: Allows the forms in the formset to be deleted.
+
+## Views
+
+The views collectively manage the functionality for viewing, creating, editing, and deleting recipes within the Django application, ensuring that only authenticated users can perform certain actions.
+
+__RecipeList__
+- A class-based view which displays a paginated list of recipes.
+- Custom queryset: filters recipes based on category, sort order and search query.
+- Context data: adds all categories, sort order and search query to the context for use in the recipe_list template.
+
+__recipe_detail__
+- A function-based view which displays the details of a specific recipe.
+- Object retrieval: fteches the recipe by primary key or raises a 404 error if not found
+
+__create_recipe__
+- a function-based view with login required, which allows logged-in users to create a new recipe.
+- Form-handling: handles form submission and validation for recipe creation, including ingredients and category.
+- Success Message: Displays a success message upon successful creation.
+- Redirection: Redirects to the detail view of the newly created recipe.
+
+__edit_recipe__
+- a function-based view with login required, which allows logged-in users to edit an existing recipe of their own creation.
+- Object Retrieval: Fetches the recipe by primary key (pk) and ensures it belongs to the current user.
+- Form Handling: Handles form submission and validation for recipe updates.
+- Success Message: Displays a success message upon successful update.
+- Redirection: Redirects to the detail view of the updated recipe.
+
+__delete_recipe__
+- a function-based view with login required which allows logged in users to delete an existing recipe of their own creation.
+- Object Retrieval: Fetches the recipe by primary key (pk) and ensures it belongs to the current user.
+- Confirmation: Displays a confirmation page before deleting the recipe.
+- Success Message: Displays a success message upon successful deletion.
+- Redirection: Redirects to the home page after deletion.
+
+## Templates
 
 
 ## Existing Features
