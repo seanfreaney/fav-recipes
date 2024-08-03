@@ -203,7 +203,13 @@ This template provides the structure for editing an existing recipe, including f
 - javascript dymanic functionality detailed below
 
 __confirm_delete.html__
+This template provides a confirmation prompt for deleting a recipe. It extends the base template for consistent styling and layout, sets an appropriate page title, and includes a form for the user to either confirm or cancel the deletion. The design ensures the user is aware of the action they are about to take and provides a secure and user-friendly way to handle recipe deletions.
 
+- Message displayed asking the user to confirm if they want to delete the specified recipe.
+- Forms Submission: A form that submits a POST request to confirm the deletion. This includes:
+  - CSRF Token: Ensures security for the form submission.
+  - Delete Button: A button to submit the form and confirm deletion, styled with a red "btn-danger" class.
+  - Cancel Button: A link to cancel the deletion and return to the recipe detail page, styled with a gray "btn-secondary" class.
 
 
 __Javascript__
@@ -274,16 +280,6 @@ __Javascript__
     formNum++;
     totalFormsInput.value = formNum;
     - Appends the cloned and modified form (newForm) to the ingredientFormset. Increments the formNum counter. Updates the value of the totalFormsInput to reflect the new total number of forms.
-
-### Recipe Editing
-
-### Recipe Deletion
-
-### Other
-
-- Pagination
-- Search / Filter
-- Header / Footer
 
 
 ### Additional features
