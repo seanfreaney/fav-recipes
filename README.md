@@ -420,6 +420,7 @@ I have used Django's admin module for the site admin interface. Inline models ar
 - Implement dynamic removal of recipe ingredients. Currently the user has to select the delete checkbox to remove an ingredient. This functionality is working but it is not the best user experience.
 - Implement a quantities model to put structure and conformity on how quantities are added to recipe ingredients.
 - Improve ingredient selection: currently you select ingredients from a dropdown. I would like to streamline this to split ingredients by type (meat, fish, pultry, pork, vegetables, herbs & spices) allowing the user to more easily find their desired ingredients.
+- Provide a form for users to notify site admin of missing ingredients to be added to the database.
 - Allow user to add their own ingredients: I would like to allow users to add their own ingredients. Currently the scope of the ingredients in quite restrictive. This will be changed in a future iteration.
 - Increase / create community:
   - Create user profiles so that users can view their own recipes and recipes of others using the site.
@@ -517,6 +518,9 @@ __Use of Moscow prioritization__
 
 __Site Admin Control__
  - I am aware that there are currently no controls in terms of what a user can post and how many posts they can make. In a real life scenario, this application would be initially tested and worked on by the site admin and one or two others. As this is a minimum viable product, it is the first of many iterations. I believe that the current functionality provides the user with the ability to validate the notional user need if it is being used in good faith. However, I acknowledge that additional control is required were this application to be rolled out in full.
+
+ __Scope of ingredients__
+  - As the global scope of 'ingredients' ishuge I acknowledge that there is currently not enough included in the current list. Please note that the list provided is not final and will be increased in later iterations. As mentioned in 'Additional Features' the ingredients is an area of the project requiring more attention than initially expected. It is my hope to allow users to notify the site admin of missing ingredients to be included and ultimately to allow users to add their own ingredients.
 
 
 ## Deployment
