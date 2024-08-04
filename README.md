@@ -11,11 +11,11 @@ As a site owner, my goal is to provide a user-friendly recipe creation site.
 It was my intention to keep the design as simple as possible. Initially, the only views I envisaged were for recipe list and recipe creation. I have included wireframes for iphone and desktop for each below
 
 - Recipe List Wireframes
-![recipe list iphone](assets/images/iphone-recipe_list.png)
-![recipe list desktop](assets/images/desktop-recipe_list.png)
+![recipe list iphone](assets/images/list-small.png)
+![recipe list desktop](assets/images/list-big.png)
 - Create Recipe Wireframes
-![recipe create iphone](assets/images/iphone-create_recipe.png)
-![recipe create desktop](assets/images/desktop-create_recipe.png)
+![recipe create iphone](assets/images/detail-small.png)
+![recipe create desktop](assets/images/detail-big.png)
 
 ## Models
 
