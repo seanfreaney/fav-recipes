@@ -416,6 +416,8 @@ I have used Django's admin module for the site admin interface. Inline models ar
 
 
 ### Additional features to be added
+
+- Implement dynamic removal of recipe ingredients. Currently the user has to select the delete checkbox to remove an ingredient. This functionality is working but it is not the best user experience.
 - Implement a quantities model to put structure and conformity on how quantities are added to recipe ingredients.
 - Improve ingredient selection: currently you select ingredients from a dropdown. I would like to streamline this to split ingredients by type (meat, fish, pultry, pork, vegetables, herbs & spices) allowing the user to more easily find their desired ingredients.
 - Allow user to add their own ingredients: I would like to allow users to add their own ingredients. Currently the scope of the ingredients in quite restrictive. This will be changed in a future iteration.
@@ -469,13 +471,29 @@ __Views Tests__
 | Click 'Home' link | directed to Recipe List | Pass |
 | Click 'Register' link | directed to Sign Up | Pass |
 | Click 'Login' link | directed to Sign In | Pass |
-| Register an account, providing correct details | directed to Recipe List | Pass |
+| Register an account, providing correct details | directed to Recipe List, success message displayed | Pass/Pass |
 | Register an account, leaving Username black | prompted to input details | Pass |
 | Register an account, leaving password black | prompted to input details | Pass |
 | Register an account, leaving password (again) black | prompted to input details | Pass |
-| Login, providing corect details | prompted to input details | Pass |
+| Login, providing corect details | directed to Recipe List, success message displayed | Pass |
 | Login, leaving Username black | prompted to input details | Pass |
 | Login, leaving Password black | prompted to input details | Pass |
+| Click 'Forgot Password' | directed to forgot password page | Pass |
+| Input email for 'Forgot Password' | receive message indicating email sent | Pass/although this is an **unfixed bug** |
+| Click 'Create Recipe' | directed to create recipe view | Pass |
+| Click 'Add Another Ingredient' in create recipe view | ingredient form added | Pass |
+| Click 'Delete' in create recipe view ingredient form | ingredient removed after clicking 'Create Recipe' | Pass |
+| Click 'View Recipe' in Recipe List | directed to recipe detail | Pass |
+| Click 'Next' in Recipe List | directed to next Recipe List page | Pass |
+| Click 'Prev' in Recipe List | directed to previous Recipe List page | Pass |
+| Click 'Edit Recipe' in Recipe Detail | directed to edit recipe view | Pass |
+| Click 'Edit Recipe' in Recipe Detail | directed to edit recipe view | Pass |
+| Click 'Delete Recipe' in Recipe Detail | directed to delete recipe view | Pass |
+| Click 'Yes, delete' in delete recipe view | redirected to recipe list/success message displayed | Pass |
+| Click 'Cancel' in delete recipe view | redirected to recipe detail | Pass |
+| Click social media icons in Footer | redirected to relevant social media homepage | Pass |
+
+
 
 
 ### Validator Testing
@@ -492,6 +510,14 @@ __Views Tests__
   - No errors returned through PEP8 CI Python Linter.
 
 
+## Unfixed Issues / Problems encountered
+
+__Email Verification__
+ - I have not yet implemented email verification for registration. This means that when a user forgets their password they cannot request to reset password as I am currently using a dummy email backend to appear as thought a password reset is being sent. 
+
+__Use of Moscow prioritization__
+ - While carrying out the project I forgot to implement Moscow prioritization. I sought advice from my mentor and they advised me to apply labels to user stories retrospectively. In future I will ensure correct usage of this method to better manage my future projects.
+
 ## Deployment
 
 - The site was deployed to GitHub pages. The steps to deploy are as follows:
@@ -501,4 +527,4 @@ __Views Tests__
 
 - Cloning and forking
 
-- The live link can be found here:
+- The live link can be found here: https://fav-recipes-fa0f732ba65f.herokuapp.com/
