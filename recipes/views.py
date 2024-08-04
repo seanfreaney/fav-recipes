@@ -16,7 +16,7 @@ class RecipeList(generic.ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        queryset = Recipe.objects.all()
+        queryset = Recipe.objects.all().order_by('created_on')
         category = self.request.GET.get("category")
         sort_by = self.request.GET.get("sort_by")
         search_query = self.request.GET.get("q")

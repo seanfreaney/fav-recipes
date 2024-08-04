@@ -108,7 +108,7 @@ class RecipeListViewTests(TestCase):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'recipes/recipe_list.html')
-        self.assertEqual(len(response.context['recipes']), 2)  
+        self.assertEqual(len(response.context['recipes']), 3)  
 
     def test_recipe_list_view_filter_by_category(self):
         response = self.client.get(reverse('home') + '?category=Lunch')

@@ -428,6 +428,28 @@ I have used Django's admin module for the site admin interface. Inline models ar
 
 ### Automated Testing
 
+__Form Tests__
+
+- RecipeFormTest: 
+  - test_valid_recipe_form: Tests a valid recipe form with data in all required fields.
+  - test_invalid_recipe_form: Tests if recipe form is invalid when required data is missing.
+  - test_recipe_form_fields: Verifies that the RecipeForm includes all the necessary fields
+
+- RecipeIngredientFormTest:
+  - test_valid_ingredient_form: Checks if the RecipeIngredientForm is valid with correct data.
+  - test_invalid_ingredient_form: Checks if the RecipeIngredientForm is invalid when required data is missing.
+  - test_ingredient_queryset: Verifies that the ingredient field's queryset is correctly set to include all ingredients, ordered by name.
+
+- RecipeCategoryFormTest:
+  - test_valid_category_form: Checks if the RecipeCategoryForm is valid with correct data.
+  - test_invalid_category_form: Checks if the RecipeCategoryForm is invalid when required data is missing.
+
+
+__Views Tests__
+
+- RecipeDetailViewTests:
+  - test_recipe_detail_view_with_published_recipe: Verifies that the detail view of a published recipe is correctly rendered.
+
 
 ### Manual Testing Table
 
@@ -448,11 +470,6 @@ I have used Django's admin module for the site admin interface. Inline models ar
 
 - __Python__
   - No errors returned through PEP8 CI Python Linter.
-
-
-### Unfixed Bugs
-- __TBU__
-  - blurb
 
 
 ## Deployment
