@@ -299,7 +299,7 @@ This template provides a confirmation prompt for deleting a recipe. It extends t
   - Delete Button: A button to submit the form and confirm deletion, styled with a red "btn-danger" class.
   - Cancel Button: A link to cancel the deletion and return to the recipe detail page, styled with a gray "btn-secondary" class.
 
-- Delete recipe 
+- Delete recipe screen
 
 ![delete recipe screen](assets/images/delete-recipe.png)
 
@@ -400,7 +400,7 @@ I have used the python allauth package to facilitate user authentication for use
 
 - Sign out successful message
 
-![sign out success message](assets/images/sign-out.png)
+![sign out success message](assets/images/sign-out-success.png)
 
 __Site Admin Interface__
 
@@ -533,7 +533,5 @@ __Site Admin Control__
   - In the GitHub repository, navigate to the Settings tab
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
-
-- Cloning and forking
 
 - The live link can be found here: https://fav-recipes-fa0f732ba65f.herokuapp.com/
