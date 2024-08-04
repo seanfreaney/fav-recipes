@@ -1,8 +1,10 @@
 # Recipe Book
 
-I love to cook but I am not very organised. My partner and I will search the pantry for ingredients and make a delicious meal but forget to write down the process and all of the ingredients used. A few days later I will crave this newly created dish and realise that I have forgotten the process and many of the ingredients. Damn!! I figured that if I am encountering this problem often, others are too. Recipe Book is intended to fix this problem and provide the user with the means to record, share and view all of their homemade recipes.
+I love to cook and share food with loved ones. I am a very forgetful person!
 
-As a site owner, my goal is to provide a user-friendly recipe creation site. 
+Have you ever made a delicious meal but forget to write down the process and all of the ingredients used? Or been at a dinner party and asked the host for a recipe of theirs (after a couple of glasses of red) and completely forgotten it? This is a problem I have encountered plenty of times so I figured others must be the same.
+
+The problems outlined above serve as my inspiration to create 'Recipe Book'. As a site owner, my ultimate goal is to create a community for lovers of cooking where people can record & share their own recipes and view & share the recipes of their friends and others. I want Recipe Book to be a user-friendly site that makes it easy to quickly record your favourite homemade recipes in case you ever lose your grandmother's old, handwritten recipe book.
 
 ## Design
 
@@ -73,7 +75,7 @@ __Model ERDs__
 
 ![Ingredient model and RecipeIngredient model ERDs](assets/images/recipe-ingredient.png)
 ![Category model and RecipeCategory model ERDs](assets/images/recipe-category.png)
-![Recipe model ERDs](assets/images/recipe-category.png)
+![Recipe model ERDs](assets/images/recipe-model.png)
 
 ## Forms
 
@@ -149,7 +151,7 @@ __delete_recipe__
 - Success Message: Displays a success message upon successful deletion.
 - Redirection: Redirects to the home page after deletion.
 
-## Templates
+## Templates / Functionality
 
 __base.html__
 
@@ -400,18 +402,34 @@ I have used the python allauth package to facilitate user authentication for use
 
 ![sign out success message](assets/images/sign-out.png)
 
+__Site Admin Interface__
 
+I have used Django's admin module for the site admin interface. Inline models are used to display and edit related objects.
 
+- RecipeIngredientInline: Defines how RecipeIngredient objects are edited inline within the Recipe admin page.
+- RecipeCategoryInline: Defines how RecipeCategory objects are edited inline within the Recipe admin page.
+- RecipeAdmin:
+  - inlines: Specifies the inline models (RecipeIngredientInline, RecipeCategoryInline) to be included in the Recipe admin page.
+  - list_display: Fields to display in the list view of the Recipe objects in the admin interface.
+  - search_fields: Fields to include in the search functionality.
+  - list_filter: Adds a filter sidebar for the status field.
 
 
 ### Additional features to be added
-- add quantities model
-- Add other
-- improve ingredient selection
+- Implement a quantities model to put structure and conformity on how quantities are added to recipe ingredients.
+- Improve ingredient selection: currently you select ingredients from a dropdown. I would like to streamline this to split ingredients by type (meat, fish, pultry, pork, vegetables, herbs & spices) allowing the user to more easily find their desired ingredients.
+- Allow user to add their own ingredients: I would like to allow users to add their own ingredients. Currently the scope of the ingredients in quite restrictive. This will be changed in a future iteration.
+- Increase / create community:
+  - Create user profiles so that users can view their own recipes and recipes of others using the site.
+  - Implement a comment model so users can comment on their own recipes and pther recipes.
+
 
 ## Testing
 
-### Testing Table
+### Automated Testing
+
+
+### Manual Testing Table
 
 | Action    | Expectation | Result | 
 | ---------|:-------------------:|----------|
