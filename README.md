@@ -167,9 +167,14 @@ This template serves as a foundational layout for the site. It includes a header
 
 ![header small screen](assets/images/header-small.png)
 
-- Header welcome message
+- Header welcome message for logged in user
 
-![header welcome message](assets/images/header-welcome.png)
+![header welcome message for logged in user](assets/images/header-welcome.png)
+
+- Header anonymous user
+
+![header anonymous user](assets/images/signed-out-header.png)
+
 
 - Main Content
   - Messages are displayed here using Bootstrap alerts (e.g., success, error notifications)
@@ -220,11 +225,15 @@ This template is used to display the details of a specific recipe. It extends th
 
 - Recipe Detail small screen
 
-![edit recipe small screens](assets/images/recipe-detail-small.png)
+![recipe detail small screens](assets/images/recipe-detail-small.png)
 
 - Recipe Detail large screen
 
-![edit recipe large screens](assets/images/recipe-detail-large.png)
+![recipe detail large screens](assets/images/recipe-detail-large.png)
+
+- Recipe Detail anonymous user
+
+![recipe detail anonymous user](assets/images/signed-out-recipe-detail.png)
 
 __create_recipe.html__
 
@@ -368,6 +377,28 @@ Custom script which allows users to dynamically add new ingredient forms to a fo
 
 
 __Authentication__
+
+I have used the python allauth package to facilitate user authentication for users. In future iterations of the site I will implement email and social media sign in. I have used some customer CSS to style the sign in and sign up screens to match the style of the site. I have also included messages to alert of successful registration/sign in.
+
+- Registration / Sign up
+
+![registration / sign up screen](assets/images/sign-up.png)
+
+- Sign in
+
+![sign in screen](assets/images/sign-in.png)
+
+- Sign out
+
+![sign out screen](assets/images/sign-out.png)
+
+- Registration / Sign up and Sign in successful message
+
+![registration / sign up success message](assets/images/sign-up-in-success.png)
+
+- Sign out successful message
+
+![sign out success message](assets/images/sign-out.png)
 
 
 
