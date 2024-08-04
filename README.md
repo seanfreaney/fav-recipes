@@ -463,7 +463,6 @@ __Views Tests__
   - test_create_recipe_view_get: Tests that the create recipe view is rendered correctly.
 
 
-
 ### Manual Testing Table
 
 | Action    | Expectation | Result | 
@@ -494,8 +493,6 @@ __Views Tests__
 | Click social media icons in Footer | redirected to relevant social media homepage | Pass |
 
 
-
-
 ### Validator Testing
 - __HTML__
   - No errors returend through W3C validator.
@@ -517,6 +514,10 @@ __Email Verification__
 
 __Use of Moscow prioritization__
  - While carrying out the project I forgot to implement Moscow prioritization. I sought advice from my mentor and they advised me to apply labels to user stories retrospectively. In future I will ensure correct usage of this method to better manage my future projects.
+
+__Site Admin Control__
+ - I am aware that there are currently no controls in terms of what a user can post and how many posts they can make. In a real life scenario, this application would be initially tested and worked on by the site admin and one or two others. As this is a minimum viable product, it is the first of many iterations. I believe that the current functionality provides the user with the ability to validate the notional user need if it is being used in good faith. However, I acknowledge that additional control is required were this application to be rolled out in full.
+
 
 ## Deployment
 
