@@ -450,12 +450,32 @@ __Views Tests__
 - RecipeDetailViewTests:
   - test_recipe_detail_view_with_published_recipe: Verifies that the detail view of a published recipe is correctly rendered.
 
+- RecipeListViewTests:
+  - test_recipe_list_view_pagination: Tests that the recipe list view supports pagination.
+  - test_recipe_list_view_filter_by_category: Tests that recipes can be filtered by category.
+  - test_recipe_list_view_sort_by_newest: Tests that recipes can be sorted by newest first.
+  - test_recipe_list_view_sort_by_oldest: Tests that recipes can be sorted by oldest first.
+  - test_recipe_list_view_search: Tests that recipes can be searched by title or description.
+
+- CreateRecipeViewTests:
+  - test_create_recipe_view_get: Tests that the create recipe view is rendered correctly.
+
+
 
 ### Manual Testing Table
 
 | Action    | Expectation | Result | 
 | ---------|:-------------------:|----------|
-| update | update | update |
+| Click 'Home' link | directed to Recipe List | Pass |
+| Click 'Register' link | directed to Sign Up | Pass |
+| Click 'Login' link | directed to Sign In | Pass |
+| Register an account, providing correct details | directed to Recipe List | Pass |
+| Register an account, leaving Username black | prompted to input details | Pass |
+| Register an account, leaving password black | prompted to input details | Pass |
+| Register an account, leaving password (again) black | prompted to input details | Pass |
+| Login, providing corect details | prompted to input details | Pass |
+| Login, leaving Username black | prompted to input details | Pass |
+| Login, leaving Password black | prompted to input details | Pass |
 
 
 ### Validator Testing
