@@ -16,14 +16,6 @@ class RecipeCategoryInline(admin.TabularInline):
 
 
 # Admin model for Recipe
-class RecipeAdmin(SummernoteModelAdmin):
-    inlines = [RecipeIngredientInline, RecipeCategoryInline]
-    list_display = ('title', 'description', 'status')
-    search_fields = ['title']
-    list_filter = ('status',)
-    summernote_fields = ('instructions',)
-
-
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
     inlines = [RecipeIngredientInline, RecipeCategoryInline]
