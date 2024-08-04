@@ -414,6 +414,10 @@ I have used Django's admin module for the site admin interface. Inline models ar
   - search_fields: Fields to include in the search functionality.
   - list_filter: Adds a filter sidebar for the status field.
 
+__Media Queries__
+
+I have used media queries to ensure that the user's view is appropriate to the device which they are using.
+
 
 ### Additional features to be added
 
