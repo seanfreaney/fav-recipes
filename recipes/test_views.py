@@ -46,10 +46,6 @@ class RecipeDetailViewTests(TestCase):
         self.assertContains(response, self.ingredient1.name)
         self.assertContains(response, self.ingredient2.name)
 
-    # to be run once draft posting available to user
-    # def test_recipe_detail_view_with_draft_recipe(self):
-    #    response = self.client.get(reverse('recipe_detail', args=[self.draft_recipe.pk]))
-    #    self.assertEqual(response.status_code, 404)
 
     # manual testing for recipe edit and delete.
 
