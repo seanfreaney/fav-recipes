@@ -11,17 +11,20 @@ As a site owner, my goal is to provide a user-friendly recipe creation site.
 It was my intention to keep the design as simple as possible. Initially, the only views I envisaged were for recipe list and recipe creation. I have included wireframes for iphone and desktop for each below
 
 - Recipe List Wireframes
-![recipe list iphone](assets/images/list-small.png)
-![recipe list desktop](assets/images/list-big.png)
+
+![recipe list small screen](assets/images/list-small.png)
+![recipe list large screen](assets/images/list-big.png)
 - Create Recipe Wireframes
-![recipe create iphone](assets/images/detail-small.png)
-![recipe create desktop](assets/images/detail-big.png)
+
+![recipe create small screen](assets/images/detail-small.png)
+![recipe create large screen](assets/images/detail-big.png)
 
 ## Models
 
 The creation of my wireframes provided a basis for the site's models. During the planning process I sought guidance from my mentor on how to associate multiple ingredients to each recipe. The use of intermediate models and the 'through' parameter facilitates this. In addition to the models listed below, I have used Django's default user model.
 
 __Category__
+
 This model is used to categorise recipes.
 - Fields
   - 'name': A character field with a maximum length of 100 characters to store the category name.
@@ -29,6 +32,7 @@ This model is used to categorise recipes.
   - '_str_': Returns the name of the category as its string representation.
 
 __Ingredient__
+
 This model represents ingredients used in recipes.
 - Fields
   - 'name': A character field with a maximum length of 100 characters to store the ingredient name.
@@ -36,6 +40,7 @@ This model represents ingredients used in recipes.
   - '_str_': Returns the name of the ingredient as its string representation.
 
 __Recipe__
+
 This model represents recipes and their associated details.
 - Fields
   - 'title': A character field with a maximum length of 200 characters for the recipe title.
@@ -50,6 +55,7 @@ This model represents recipes and their associated details.
   - '_str_': Returns the name of the recipe as its string representation.
 
 __RecipeIngredient__
+
 This model serves as an intermediary to manage the many-to-many relationship between recipes and ingredients, including the quantity of each ingredient used in a recipe.
 - Fields
   - 'recipe': A foreign key to the Recipe model, linking the ingredient to a specific recipe. If the recipe is deleted, the associated RecipeIngredient records will also be deleted.
@@ -57,10 +63,13 @@ This model serves as an intermediary to manage the many-to-many relationship bet
   - 'qunatity': A character field with a maximum length of 100 characters to specify the quantity of the ingredient used in the recipe.
 
 __RecipeCategory__
+
 This model serves as an intermediary to manage the many-to-many relationship between recipes and categories.
 - Fields
   - 'recipe': A foreign key to the Recipe model, linking the recipe to a specific category. If the recipe is deleted, the associated RecipeCategory records will also be deleted.
   - 'category': A foreign key to the Category model, linking the recipe to a specific category. If the category is deleted, the associated RecipeCategory records will also be deleted. 
+
+__Model ERDs__
 
 ![Ingredient model and RecipeIngredient model ERDs](assets/images/recipe-ingredient.png)
 ![Category model and RecipeCategory model ERDs](assets/images/recipe-category.png)
@@ -69,12 +78,14 @@ This model serves as an intermediary to manage the many-to-many relationship bet
 ## Forms
 
 __RecipeForm__
+
 - Defines a form for the 'Recipe' model
 - Meta class:
   - model: Specifies the model this form is associated with (Recipe).
   - fields: Specifies the fields to include in the form (title, description, instructions, status).
 
 __RecipeIngredientForm__
+
 - Defines a form for the 'RecipeIngredient' model.
 - Meta class:
   - model: Specifies the model this form is associated with (RecipeIngredient).
@@ -84,12 +95,14 @@ __RecipeIngredientForm__
   - Orders the ingredient queryset alphabetically by name for the dropdown selection.
 
 __RecipeCategoryForm__
+
 - Defines a form for the 'RecipeCategory' model.
 - Meta class: 
   - model: Specifies the model this form is associated with (RecipeCategory).
   - fields: Specifies the field to include in the form (category).
 
 __RecipeIngredientFormSet__
+
 - Creates an inline formset for managing RecipeIngredient instances related to a Recipe.
 - Parameters:
   - Recipe: The parent model.
@@ -103,21 +116,25 @@ __RecipeIngredientFormSet__
 The views collectively manage the functionality for viewing, creating, editing, and deleting recipes within the Django application, ensuring that only authenticated users can perform certain actions.
 
 __RecipeList__
+
 - A class-based view which displays a paginated list of recipes.
 - Custom queryset: filters recipes based on category, sort order and search query.
 - Context data: adds all categories, sort order and search query to the context for use in the recipe_list template.
 
 __recipe_detail__
+
 - A function-based view which displays the details of a specific recipe.
-- Object retrieval: fteches the recipe by primary key or raises a 404 error if not found
+- Object retrieval: fetches the recipe by primary key or raises a 404 error if not found
 
 __create_recipe__
+
 - a function-based view with login required, which allows logged-in users to create a new recipe.
 - Form-handling: handles form submission and validation for recipe creation, including ingredients and category.
 - Success Message: Displays a success message upon successful creation.
 - Redirection: Redirects to the detail view of the newly created recipe.
 
 __edit_recipe__
+
 - a function-based view with login required, which allows logged-in users to edit an existing recipe of their own creation.
 - Object Retrieval: Fetches the recipe by primary key (pk) and ensures it belongs to the current user.
 - Form Handling: Handles form submission and validation for recipe updates.
@@ -125,6 +142,7 @@ __edit_recipe__
 - Redirection: Redirects to the detail view of the updated recipe.
 
 __delete_recipe__
+
 - a function-based view with login required which allows logged in users to delete an existing recipe of their own creation.
 - Object Retrieval: Fetches the recipe by primary key (pk) and ensures it belongs to the current user.
 - Confirmation: Displays a confirmation page before deleting the recipe.
@@ -134,13 +152,24 @@ __delete_recipe__
 ## Templates
 
 __base.html__
+
 This template serves as a foundational layout for the site. It includes a header with navigation, a footer with social media links, and a main content area where specific pages will inject their content. It also handles user authentication states and displays messages using Bootstrap styling.
 
 - Header and Navigation
   - Display of site title and Navbar
   - Navigation links which adjust based on user authentication state. If anonymous, user can see links for 'Home', 'Register' and 'Login'. If logged in the user can see links for 'Home', 'Create Recipe', 'Logout' and a welcome message.
 
--- Image here -- 
+- Header large screen
+
+![header large screen](assets/images/header-large.png)
+
+- Header small screen
+
+![header small screen](assets/images/header-small.png)
+
+- Header welcome message
+
+![header welcome message](assets/images/header-welcome.png)
 
 - Main Content
   - Messages are displayed here using Bootstrap alerts (e.g., success, error notifications)
@@ -149,9 +178,12 @@ This template serves as a foundational layout for the site. It includes a header
 - Footer 
   - Footer containing social media links and false copyright information.
 
--- Image here --
+- Footer
+
+![footer all screen sizes](assets/images/footer.png)
 
 __recipe_list.html__
+
 This template is used to display the list of recipes with filtering, sorting, and search functionalities. It extends the base template to maintain a consistent look and feel. The main content area includes a form for filtering recipes, a list of recipe cards, and pagination controls to navigate through the list of recipes.
 
 - Filter Form:
@@ -165,7 +197,17 @@ This template is used to display the list of recipes with filtering, sorting, an
 - Pagination controls:
   - pagination buttons if the recipe list is paginated, allowing users to navigate between pages of recipes.
 
+- Recipe List small screen
+
+![recipe list small screens](assets/images/recipe-list-small.png)
+
+- Recipe List large screen
+
+![recipe list large screens](assets/images/recipe-list-large.png)
+
+
 __recipe_detail.html__
+
 This template is used to display the details of a specific recipe. It extends the base template for consistency and includes sections for the recipe's title, description, instructions, ingredients, categories, and status. If the logged-in user is the owner of the recipe, they are given options to edit or delete the recipe. The use of Bootstrap classes ensures the content is styled appropriately.
 
 - Recipe detail card displays the recipe title inside a Bootstrap card with a dark background and light text.
@@ -176,7 +218,16 @@ This template is used to display the details of a specific recipe. It extends th
 - Status shows the status of the recipe using the get_status_display method to display the human-readable version of the status.
 - "Edit Recipe" and "Delete Recipe" buttons if the current user is the owner of the recipe, allowing them to edit or delete the recipe.
 
+- Recipe Detail small screen
+
+![edit recipe small screens](assets/images/recipe-detail-small.png)
+
+- Recipe Detail large screen
+
+![edit recipe large screens](assets/images/recipe-detail-large.png)
+
 __create_recipe.html__
+
 This template provides the structure for creating a new recipe, including forms for recipe details, categories, and ingredients. It checks if the user is authenticated before displaying the form, prompting login otherwise. The template leverages Django's form handling to render forms and includes JavaScript for enhanced functionality like adding more ingredient forms dynamically. The layout and design are consistent with the rest of the site, using Bootstrap for styling.
 
 - Display for a form to create a new recipe:
@@ -189,7 +240,20 @@ This template provides the structure for creating a new recipe, including forms 
 
 - javascript dymanic functionality detailed below
 
+- Create recipe small screen
+
+![create recipe small screens](assets/images/create-recipe-small.png)
+
+- Create recipe large screen
+
+![create recipe large screens](assets/images/create-recipe-large.png)
+
+- Create recipe success message
+
+![create recipe large screens](assets/images/create-recipe-success.png)
+
 __edit_recipe.html__
+
 This template provides the structure for editing an existing recipe, including forms for recipe details, categories, and ingredients. It checks if the user is authenticated before displaying the form, prompting login otherwise. The template leverages Django's form handling to render forms and includes JavaScript for enhanced functionality like adding more ingredient forms dynamically. The layout and design are consistent with the rest of the site, using Bootstrap for styling.
 
 - Display for a form to edit and existing recipe:
@@ -202,7 +266,20 @@ This template provides the structure for editing an existing recipe, including f
 
 - javascript dymanic functionality detailed below
 
+- Edit Recipe small screen
+
+![edit recipe small screens](assets/images/edit-recipe-small.png)
+
+- Edit Recipe large screen
+
+![edit recipe large screens](assets/images/edit-recipe-large.png)
+
+- Edit recipe success message
+
+![edit recipe success message](assets/images/edit-recipe-success.png)
+
 __confirm_delete.html__
+
 This template provides a confirmation prompt for deleting a recipe. It extends the base template for consistent styling and layout, sets an appropriate page title, and includes a form for the user to either confirm or cancel the deletion. The design ensures the user is aware of the action they are about to take and provides a secure and user-friendly way to handle recipe deletions.
 
 - Message displayed asking the user to confirm if they want to delete the specified recipe.
@@ -211,9 +288,17 @@ This template provides a confirmation prompt for deleting a recipe. It extends t
   - Delete Button: A button to submit the form and confirm deletion, styled with a red "btn-danger" class.
   - Cancel Button: A link to cancel the deletion and return to the recipe detail page, styled with a gray "btn-secondary" class.
 
+- Delete recipe 
+
+![delete recipe screen](assets/images/delete-recipe.png)
+
+- Delete recipe success message
+
+![delete recipe success message](assets/images/delete-recipe-success.png)
 
 __Javascript__
- - Custom script which allows users to dynamically add new ingredient forms to a formset on a webpage. When the user clicks the "Add Ingredient" button, a new form is created by cloning the first form in the set, updating its attributes to ensure uniqueness, clearing its values, and appending it to the formset.
+
+Custom script which allows users to dynamically add new ingredient forms to a formset on the edit and create recipe views. When the user clicks the "Add Ingredient" button, a new form is created by cloning the first form in the set, updating its attributes to ensure uniqueness, clearing its values, and appending it to the formset.
 
 - Event Listener for DOMContentLoaded:
    - document.addEventListener('DOMContentLoaded', function() {
@@ -282,7 +367,13 @@ __Javascript__
     - Appends the cloned and modified form (newForm) to the ingredientFormset. Increments the formNum counter. Updates the value of the totalFormsInput to reflect the new total number of forms.
 
 
-### Additional features
+__Authentication__
+
+
+
+
+
+### Additional features to be added
 - add quantities model
 - Add other
 - improve ingredient selection
