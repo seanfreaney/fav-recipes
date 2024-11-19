@@ -527,11 +527,23 @@ __Site Admin Control__
   - As the global scope of 'ingredients' ishuge I acknowledge that there is currently not enough included in the current list. Please note that the list provided is not final and will be increased in later iterations. As mentioned in 'Additional Features' the ingredients is an area of the project requiring more attention than initially expected. It is my hope to allow users to notify the site admin of missing ingredients to be included and ultimately to allow users to add their own ingredients.
 
 
-## Deployment
+### Deploy to Heroku
+1. Create a new Heroku app
+2. In Heroku Settings, I added the following Config Vars:
+   - `DATABASE_URL`: My PostgreSQL database URL
+   - `SECRET_KEY`: My Django secret key
+  
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-  - In the GitHub repository, navigate to the Settings tab
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+3. In my IDE:
+   - I creates a `requirements.txt`: `pip freeze > requirements.txt`
+   - Create a `Procfile`: `web: gunicorn your_project_name.wsgi:application`
+   - Ensure `DEBUG = False` in settings.py
+   - Add Heroku app URL to `ALLOWED_HOSTS`
+
+4. Deploy:
+   - Connect GitHub repository to Heroku
+   - Enable automatic deploys, and
+   - Deploy main branch
+
 
 - The live link can be found here: https://fav-recipes-fa0f732ba65f.herokuapp.com/
